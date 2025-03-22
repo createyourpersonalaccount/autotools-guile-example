@@ -1,0 +1,10 @@
+# These are Autotools-generated files, that you should distribute in
+# your tarballs but there is no need to include them in the git
+# repository.
+missing
+install-sh
+texinfo.tex
+Makefile.in
+/aclocal.m4
+/configure
+/autom4te.cache

@@ -1,0 +1,84 @@
+\input texinfo
+@include config.texi
+@settitle Autotools-Guile-Example Manual version @value{VERSION}
+
+@dircategory Software development
+@direntry
+* Autotools Guile Example: (autotools-guile-example).
+  A Guile project skeleton with autotools.
+@end direntry
+
+@copying
+The Autotools-Guile-Example manual.
+
+Copyright @copyright{} 2025 Nikolaos Chatzikonstantinou.
+@end copying
+
+@c This titlepage is not visible in the info output, but it is present in
+@c HTML, PDF, and other "hard copy" outputs.
+@titlepage
+@title The Autotools-Guile-Example version @value{VERSION}
+@c Use the '@page' command to cause a page break.
+@page
+@c To push the copyright notice and the other text on the copyright page
+@c towards the bottom of the page in TeX output, use the following after
+@c '@page':
+@vskip 0pt plus 1filll
+@insertcopying
+@end titlepage
+
+@c Generate a table of contents, long form. Use @shortcontents for short
+@c form.
+@contents
+
+@c The 'Top' node is the node in which a reader enters an Info
+@c manual. The contents of the 'Top' node do not appear in printed
+@c output. The '@top' command is the Info manual title.
+@node Top
+@top Autotools-Guile-Example
+
+This manual is for Autotools-Guile-Example version @value{VERSION}.
+
+@c Similarly '@menu' does not appear in printed output. See also
+@c '@detailmenu'.
+@menu
+* Introduction::     Introduction to Autotools-Guile-Example.
+* Index::            Complete index.
+@end menu
+
+@c The body of the document. A manual is divided into one or more
+@c "nodes". After a node is declared, it should be structured with
+@c '@chapter', '@section', or '@subsection' and '@subsubsection'. See
+@c "Chapter Structuring" in the texinfo manual.
+@c
+@c The text itself can be marked up. See "Cross-references", "Marking
+@c Text, Words and Phrases", "Quotations and Examples", "Lists and
+@c Tables", "Special Displays" in the texinfo manual. Also useful is
+@c "Definition Commands" for API descriptions.
+
+@node Introduction
+@chapter Introduction
+
+@cindex chapter, first
+This is the introductory chapter.
+
+@c This is the end of the Texinfo file. The index will include the
+@c entries from '@cindex'. For hardcopy output, you must also use
+@c texindex. You can define your own indices with '@defindex' and
+@c '@defcodeindex'. To include more than one index, repeat the below
+@c three commands for the additional indices, e.g.:
+@c
+@c   @node Variable Index
+@c   @unnumbered Variable Index
+@c   @printindex vr
+@c
+@node Index
+@unnumbered Index
+
+@c See "Predefined Indices" for the argument that can be passed to
+@c '@printindex'. In this case, "cp" is the concept index; it is
+@c recommended to be placed last amongst all indices.
+@printindex cp
+
+@bye
+

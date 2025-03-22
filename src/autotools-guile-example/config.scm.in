@@ -1,0 +1,9 @@
+(define-module (autotools-guile-example config)
+  #:export (autotools-guile-example-version
+            autotools-guile-example-bug-report-address
+            autotools-guile-example-package-url))
+
+(define autotools-guile-example-version "@PACKAGE_VERSION@")
+(define autotools-guile-example-bug-report-address "@PACKAGE_BUGREPORT@")
+(define autotools-guile-example-package-url "@PACKAGE_URL@")
+

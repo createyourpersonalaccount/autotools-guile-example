@@ -1,0 +1,94 @@
+* Table of contents
+
+1. [[#an-autotools-project-skeleton-for-gnu-guile][An Autotools project skeleton for GNU Guile]]
+2. [[#configuring-and-compiling][Configuring and compiling]]
+3. [[#installing][Installing]]
+4. [[#running-the-test-suite][Running the test suite]]
+5. [[#cleaning-up][Cleaning up]]
+6. [[#out-of-source-builds][Out-of-source builds]]
+7. [[#discussion][Discussion]]
+8. [[#issues][Issues]]
+
+* An Autotools project skeleton for GNU Guile
+
+This project consists of:
+
+- Three source modules under ~src~.
+- An application under ~app~.
+- A Texinfo manual under ~doc~.
+- A test suite under ~test~ (with ~build-aux~ borrowed from <https://github.com/wedesoft/guile-testing>).
+
+This is an opinionated approach; see [[Discussion]] for details on what opinionated decisions have been made.
+
+* Configuring and compiling
+
+To compile the project, use:
+
+#+begin_src sh
+autoreconf -fi
+./configure
+make
+#+end_src
+
+* Installing
+
+*TODO* fix installation.
+
+To install the library and application, use:
+
+#+begin_src sh
+make install
+#+end_src
+
+To uninstall it, use:
+
+#+begin_src sh
+make uninstall
+#+end_src
+
+* Running the test suite
+
+To check the test suite, use:
+
+#+begin_src sh
+make check
+#+end_src
+
+It should produce a ~test-suite.log~ file that contains the aggregate report, and individual reports such as ~test/test.log~ and ~test/test.trs~, see the Automake manual on [[https://www.gnu.org/software/automake/manual/html_node/Log-files-generation-and-test-results-recording.html][Log files generation and test results recording]] for these files.
+
+If some of your tests fail, after fixing them, you can skip running the full test suite and only run those failing tests with:
+
+#+begin_src sh
+make recheck
+#+end_src
+
+* Cleaning up
+
+To clean up, use:
+
+#+begin_src sh
+make maintainer-clean
+#+end_src
+
+* Out-of-source builds
+
+This project supports [[https://www.gnu.org/software/automake/manual/html_node/VPATH-Builds.html][VPATH builds]], so you can also do:
+
+#+begin_src sh
+autoreconf -fi
+mkdir -p build && cd build
+../configure
+make
+#+end_src
+
+* Discussion
+
+- Obviously not every project consists of both a library and an application.
+- We define a top-level module ~(autotools-guile-example)~ as well as secondary modules ~(autotools-guile-example config)~ and ~(autotools-guile-example factorial)~, but you don't need to follow this style; you may instead want to have all your library modules under ~src/$lib_name~ and access them with ~($lib_name $mod_name)~.
+- You do not need to use Autotools, but it is the GNU build system, and it fits well in the GNU ecosystem.
+- You don't need to use the custom test driver in ~build-aux~, but it is adding colors and structure to the test suite output and hooks into [[https://www.gnu.org/software/automake/manual/html_node/Overview-of-Custom-Test-Drivers-Support.html][Automake's test harness]].
+- You don't need to use [[https://srfi.schemers.org/srfi-64/srfi-64.html][SRFI-64]] for your unit tests, but it should work for most newcomers. An alternative approach can be found in the test suite of [[https://www.gnu.org/software/guile-ncurses/][GNU Guile-Ncurses]], although the possibilities are endless.
+
+* Issues
+
+Support for installing in non-standard paths is missing. As a result, the ~make distcheck~ command will not work unless you run it as root. See <https://www.unwoundstack.com/blog/guile-and-autoconf.html> for some information and workarounds on this issue.
